@@ -1,0 +1,299 @@
+<!-- 
+THEME: Small Apps | Bootstrap App Landing Template
+VERSION: 1.0.0
+AUTHOR: Themefisher
+
+HOMEPAGE: https://themefisher.com/products/small-apps-free-app-landing-page-template/
+DEMO: https://demo.themefisher.com/small-apps/
+GITHUB: https://github.com/themefisher/Small-Apps-Bootstrap-App-Landing-Template
+
+Get HUGO Version : https://themefisher.com/products/small-apps-hugo-app-landing-theme/
+
+WEBSITE: https://themefisher.com
+TWITTER: https://twitter.com/themefisher
+FACEBOOK: https://www.facebook.com/themefisher
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>廷維工程 ｜ 主任</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Small Apps Template v1.0">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  
+  <!-- PLUGINS CSS STYLE -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="plugins/aos/aos.css">
+
+  <!-- CUSTOM CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .jobs {
+        display: none;
+    }
+
+    /* .input-title {
+            width: 10%;
+    }
+
+    .input-content {
+        max-width: 40%;
+    } */
+
+    @media screen and (max-width: 600px){
+        .input-title {
+            width: auto;
+        }
+    }
+        
+  </style>
+
+</head>
+
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+
+
+<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="ti-menu"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown @@home">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Home</a>
+        </li>
+        <li class="nav-item @@logout">
+          <a class="nav-link" href="logout.php">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--====================================
+=            Single Article            =
+=====================================-->
+<section class="section blog-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 m-auto">
+				<!-- Single Post -->
+                <form class="row" action="connected/punch_in_submit.php" id="c_site_form" method="POST">
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <!-- 設定工程名稱 -->
+                            <label class="input-group-text" for="c_site_name">工程名稱</label>
+                            <select class="form-select" id="c_site_name" name="c_site_name" required>
+                                <option value="" selected>請選擇工程...</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <!-- 設定請款人、工人數量 -->
+                            <label class="visually-hidden" for="requester">請款人</label>
+                            <div class="input-group-text">請款人</div>
+                            <input type="text" class="form-control input-content" name="requester" id="requester" placeholder="輸入請款人" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <label class="visually-hidden" for="c_site_worker">工人數量</label>
+                            <div class="input-group-text">工人數量</div>
+                            <input type="number" class="form-control input-content" name="c_site_worker" id="c_site_worker" placeholder="輸入工人數量" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <!-- 設定扣工方式、工錢 -->
+                            <label class="visually-hidden" for="deduction_method">扣工方式</label>
+                            <div class="input-group-text">扣工方式</div>
+                            <select class="form-select input-content" id="deduction_method" name="deduction_method" required>
+                                <option value="" selected>請選擇扣工方式...</option>
+                                <option value="現扣">現扣</option>
+                                <option value="尾扣">尾扣</option>
+                                <option value="營造請">營造請</option>
+                                <option value="公司">公司</option>
+                            </select>
+                            <select class="form-select input-content d-none" id="deduction_remark" name="deduction_remark">
+                                <option value="數量" selected >數量</option>
+                                <option value="單位">單位</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <label class="visually-hidden" for="wages">單位工錢</label>
+                            <div class="input-group-text">單位工錢</div>
+                            <input type="text" class="form-control" name="wages" id="wages" placeholder="請輸入工錢" required>
+                        </div>
+                    </div>
+    
+                    <div class="col-12 mt-3">
+                        <div class="input-group">
+                        <!-- 設定日期 -->
+                            <label class="visually-hidden" for="date">日期</label>
+                            <div class="input-group-text">日期</div>
+                            <input type="date" class="form-control" name="date" id="date">
+                        </div>
+                    </div>
+    
+                    <div class="col-12 mt-3">
+                        <div class="input-group">
+                            <!-- 設定工作內容 -->
+                            <span class="input-group-text">工作內容</span>
+                            <textarea class="form-control" id="remark" name="remark"></textarea>
+                        </div>
+                    </div>
+    
+                    <div class="col-12 mt-3">
+                        <div class="input-group">
+                            <!-- 設定扣工明細 -->
+                            <span class="input-group-text">扣工明細</span>
+                            <textarea class="form-control" id="deduction" name="deduction"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-3 mt-3 justify-content-md-end">
+                        <button type="submit" class="btn btn-primary">送出</button>
+                    </div>
+                </form>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Single Article  ====-->
+
+<!--======================================
+=            Related Article            =
+=======================================-->
+<!--====  End of Related Article  ====-->
+
+<!--============================
+=            Footer            =
+=============================-->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
+          <div class="block">
+            <a href="index.html"><img src="images/logo-alt.png" alt="footer-logo"></a>
+            <!-- Social Site Icons -->
+            <ul class="social-icon list-inline">
+              <li class="list-inline-item">
+                <a href="https://www.facebook.com/themefisher"><i class="ti-facebook"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/themefisher"><i class="ti-twitter"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.instagram.com/themefisher/"><i class="ti-instagram"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Product</h6>
+            <!-- links -->
+            <ul>
+              <li><a href="team.html">Teams</a></li>
+              <li><a href="blog.html">Blogs</a></li>
+              <li><a href="FAQ.html">FAQs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Resources</h6>
+            <!-- links -->
+            <ul>
+              <li><a href="sign-up.html">Singup</a></li>
+              <li><a href="sign-in.html">Login</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Company</h6>
+            <!-- links -->
+            <ul>
+              <li><a href="career.html">Career</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="team.html">Investor</a></li>
+              <li><a href="privacy.html">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Company</h6>
+            <!-- links -->
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="team.html">Team</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center bg-dark py-4">
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></small class="text-secondary">
+  </div>
+
+  <div class="text-center bg-dark py-1">
+    <small> <p>Distributed By <a href="https://themewagon.com/">Themewagon</a></p></small class="text-secondary">
+   </div>
+</footer>
+
+
+  <!-- To Top -->
+  <div class="scroll-top-to">
+    <i class="ti-angle-up"></i>
+  </div>
+  
+  <!-- JAVASCRIPTS -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="plugins/slick/slick.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
+  <script src="plugins/aos/aos.js"></script>
+  <script src="js/punch_in.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

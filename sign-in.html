@@ -21,7 +21,7 @@ FACEBOOK: https://www.facebook.com/themefisher
   <!-- Basic Page Needs
   ================================================== -->
   <meta charset="utf-8">
-  <title>Small Apps | Bootstrap App Landing Template</title>
+  <title>廷維工程 | 登入帳戶</title>
 
   <!-- Mobile Specific Metas
   ================================================== -->
@@ -56,7 +56,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 			<div class="col-12">
 				<div class="block">
 					<!-- Image -->
-					<div class="image align-self-center"><img class="img-fluid" src="images/Login/front-desk-sign-in.jpg"
+					<div class="image align-self-center d-none"><img class="img-fluid" src="images/Login/front-desk-sign-in.jpg"
 							alt="desk-image"></div>
 					<!-- Content -->
 					<div class="content text-center">
@@ -64,17 +64,17 @@ FACEBOOK: https://www.facebook.com/themefisher
 							<a href="index.html"><img src="images/logo.png" alt=""></a>
 						</div>
 						<div class="title-text">
-							<h3>Sign in to To Your Account</h3>
+							<h3>登入帳戶</h3>
 						</div>
-						<form action="#">
+						<form action="./connected/identify.php" method="post">
 							<!-- Username -->
-							<input class="form-control main" type="text" placeholder="Username" required>
+							<input class="form-control main" type="text" name="account" placeholder="帳戶名稱" required>
 							<!-- Password -->
-							<input class="form-control main" type="password" placeholder="Password" required>
+							<input class="form-control main" type="password" name="passwd" placeholder="密碼" autocomplete="on" required>
 							<!-- Submit Button -->
-							<button class="btn btn-main-sm">sign in</button>
+							<button type="submit" class="btn btn-main-sm">登入</button>
 						</form>
-						<div class="new-acount">
+						<div class="new-acount d-none">
 							<a href="contact.html">Forget your password?</a>
 							<p>Don't Have an account? <a href="sign-up.html"> SIGN UP</a></p>
 						</div>
