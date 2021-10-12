@@ -47,7 +47,7 @@ $(document).ready(function () {
             success: function (json) {
                 console.log(json.status); // show response from the php script.
                 alert('新增成功');
-                // location.reload();
+                location.reload();
             }
         });
 
