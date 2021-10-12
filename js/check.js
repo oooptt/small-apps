@@ -7,16 +7,23 @@ $(document).ready(function () {
         },
         dataType: "json"
     }).done(function (json) {
+
+        // 初始化時，設定 工程名稱 到input select中
         jQuery.each(json.c_name, function (_i, val) {
             $("#c-site-select").append('<option value=' + val + '>' + val + '</option>');
         });
         $("#c-site-select").append('<option value="所有工程">所有工程</option>');
 
+        // 初始化時，設定  負責人  到input select中
         jQuery.each(json.c_charge, function (_i, val) {
             $("#c-site-charge").append('<option value=' + val + '>' + val + '</option>');
         });
+
+        // 初始化時，設定table中的負責人
+        $('#charge-name').text('所有主任');
     });
 
+    // 設定工程清單時，更新table內資料
     $("#c-site-select").change(function () {
         $('#date-func option[value=1]').attr('selected', 'true');
 
@@ -26,7 +33,8 @@ $(document).ready(function () {
             dataType: "json",
             data: {
                 propose: "change_c_site",
-                c_site_name: $(this).val()
+                c_site_name: $('#c-site-select').val(),
+                c_site_charge: $('#c-site-charge').val()
             },
         }).done(function (json) {
 
@@ -37,6 +45,7 @@ $(document).ready(function () {
         $('#date-func option[value=1]').removeAttr('selected');
     })
 
+    // 設定負責人時，更新table內資料
     $("#c-site-charge").change(function () {
 
         $.ajax({
@@ -44,8 +53,9 @@ $(document).ready(function () {
             type: 'POST',
             dataType: "json",
             data: {
-                propose: "change_c_site",
-                c_site_name: $(this).val()
+                propose: "change_charge",
+                c_site_name: $('#c-site-select').val(),
+                c_site_charge: $('#c-site-charge').val()
             },
         }).done(function (json) {
 
@@ -54,6 +64,7 @@ $(document).ready(function () {
         });
     })
 
+    // 設定日期時，更新table內資料
     $("#date-func").change(function () {
         if ($('#date-func').val() == '0') {
             $('#date-select').css("display", "block");
@@ -68,6 +79,7 @@ $(document).ready(function () {
             data: {
                 propose: "date-func",
                 c_site_name: $('#c-site-select').val(),
+                c_site_charge: $('#c-site-charge').val(),
                 date_select: $('#date-func').val(),
                 date_start: $('#date-start').val(),
                 date_end: $('#date-end').val()
@@ -79,6 +91,7 @@ $(document).ready(function () {
         });
     })
 
+    // 當日期為"選定日期"，設定起始日期時，更新table內資料
     $("#date-start").change(function () {
         $.ajax({
             url: 'connected/check.php',
@@ -87,6 +100,7 @@ $(document).ready(function () {
             data: {
                 propose: "date-func",
                 c_site_name: $('#c-site-select').val(),
+                c_site_charge: $('#c-site-charge').val(),
                 date_select: $('#date-func').val(),
                 date_start: $('#date-start').val(),
                 date_end: $('#date-end').val()
@@ -98,6 +112,7 @@ $(document).ready(function () {
         });
     })
 
+    // 當日期為"選定日期"，設定結束日期時，更新table內資料
     $("#date-end").change(function () {
         $.ajax({
             url: 'connected/check.php',
@@ -106,6 +121,7 @@ $(document).ready(function () {
             data: {
                 propose: "date-func",
                 c_site_name: $('#c-site-select').val(),
+                c_site_charge: $('#c-site-charge').val(),
                 date_select: $('#date-func').val(),
                 date_start: $('#date-start').val(),
                 date_end: $('#date-end').val()
@@ -118,7 +134,13 @@ $(document).ready(function () {
     })
 });
 
+// 更新整個table
 function update_data(json) {
+
+    // 設定table的負責人
+    var charge_val = $('#c-site-charge').val();
+    $('#charge-name').text(charge_val);
+
     // 將table清空後重新載入內容
     $('#c-site-tbody').empty();
 
@@ -139,13 +161,13 @@ function update_data(json) {
 
         if (obj.補請款 == 1) {
             $('#c-site-tbody').append("<tr class='data-entity' style='background-color:#fff0f0' id=補" + ((+count_alter) + 1) + "><td>補" +
-                ((+count_alter) + 1) + "</td><td>" + obj.負責人 + "</td><td>" +
+                ((+count_alter) + 1) + "</td><td>" + obj.工程名稱 + "</td><td>" +
                 obj.工數 + "</td><td>" + obj.扣工方式 + "</td><td>" + obj.工作內容 +
                 "</td><td>" + obj.扣工明細 + "</td><td>" + obj.總額 + "</td></tr>");
             count_alter++;
         } else {
             $('#c-site-tbody').append("<tr class='data-entity' id=" + ((+count) + 1) + "><td>" +
-                ((+count) + 1) + "</td><td>" + obj.負責人 + "</td><td>" +
+                ((+count) + 1) + "</td><td>" + obj.工程名稱 + "</td><td>" +
                 obj.工數 + "</td><td>" + obj.扣工方式 + "</td><td>" + obj.工作內容 +
                 "</td><td>" + obj.扣工明細 + "</td><td>" + obj.總額 + "</td></tr>");
             count++;
@@ -153,6 +175,7 @@ function update_data(json) {
     });
 }
 
+// 匯出excel表單
 function make_file() {
 
     $.ajax({

@@ -48,7 +48,6 @@ FACEBOOK: https://www.facebook.com/themefisher
 
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 
-<link rel="import" href="./nav.html">
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0" id="site-nav">
     <div class="container">
         <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
@@ -113,7 +112,6 @@ FACEBOOK: https://www.facebook.com/themefisher
                     <label class="input-group-text col-2" for="date-func">查看</label>
                     <select class="form-select col-10" id="date-func">
                         <option value="1">今日點工</option>
-                        <option value="3">三日內點工</option>
                         <option value="7">本周點工</option>
                         <option value="30">本月點工</option>
                         <option value="100">所有點工</option>
@@ -132,9 +130,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                   <table class="table" id="record-table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col" id="charge-name"></th>
                             <th scope="col">工地名稱</th>
-                            <th scope="col">負責人</th>
                             <th scope="col">工數</th>
                             <th scope="col">扣工方式</th>
                             <th scope="col">工作內容</th>
@@ -145,7 +142,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                     <tbody id="c-site-tbody"></tbody>
                  </table>
                  <table class="table" id="save-table" style="display: none;">
-                    <thead>
+                    <!-- <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">工程名稱</th>
@@ -158,8 +155,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                             <th scope="col">工錢</th>
                             <th scope="col">總額</th>
                         </tr>
-                    </thead>
-                    <tbody id="save-tbody"></tbody>
+                    </thead> -->
+                    <!-- <tbody id="save-tbody"></tbody> -->
                 </table>
               </div>             
 			</div>
